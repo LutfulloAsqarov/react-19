@@ -11,6 +11,11 @@ import category10 from "../assets/images/category/category10.svg";
 import categoryCard1 from "../assets/images/category/categoryCard1.svg";
 import categoryCard2 from "../assets/images/category/categoryCard2.svg";
 import categoryCard3 from "../assets/images/category/categoryCard3.svg";
+import service1 from "../assets/images/banner/service1.svg";
+import service2 from "../assets/images/banner/service2.svg";
+import service3 from "../assets/images/banner/service3.svg";
+import service4 from "../assets/images/banner/service4.svg";
+import service5 from "../assets/images/banner/service5.svg";
 
 export const CATEGORY = [
     {
@@ -101,4 +106,27 @@ export const CATEGORYCARDS = [
         img: categoryCard3,
         title: "The best Organic Products Online",
     },
+];
+
+export const SERVICE = [
+    {
+        id: 1,
+        img: service1,
+        title: "Best prices & offers",
+        desc: "When you sign up",
+    },
+    {
+        id: 2,
+        img: service2,
+        title: "Free delivery",
+        desc: "24/7 amazing services",
+    },
+    {
+        id: 3,
+        img: service3,
+        title: "Great daily deal",
+        desc: "When you sign up",
+    },
+    { id: 4, img: service4, title: "Wide assortment", desc: "Mega Discounts" },
+    { id: 5, img: service5, title: "Easy returns", desc: "Within 30 days" },
 ];

@@ -4,6 +4,7 @@ import "./Category.scss";
 const Category = () => {
     let categoryItems = CATEGORY?.map((el) => (
         <div
+            data-aos="fade-right"
             key={el.id}
             className="category__card"
             style={{ background: el.bgColor }}
@@ -16,6 +17,7 @@ const Category = () => {
 
     let categoryCards = CATEGORYCARDS?.map((el) => (
         <div
+            data-aos="fade-left"
             key={el.id}
             className="category__bot-card"
             style={{

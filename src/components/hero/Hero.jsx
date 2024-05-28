@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -14,18 +14,24 @@ const Hero = () => {
             <div className="hero container">
                 <Swiper
                     navigation={true}
-                    modules={[Navigation]}
+                    modules={[Navigation, Autoplay]}
                     className="hero__swiper"
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
+                    loop={true}
                 >
                     <SwiperSlide>
                         <div className="hero__item">
                             <img className="hero__img" src={heroImg1} alt="" />
                             <div className="hero__content">
-                                <h1 className="hero__title">
-                                    Fresh Vegetables Big discount
-                                </h1>
+                                <h2 className="hero__title">
+                                    Stay home & get your daily needs from our
+                                    shop
+                                </h2>
                                 <p className="hero__desc">
-                                    Save up to 50% off on your first order
+                                    Start You are Daily Shopping with Nest Mart
                                 </p>
                                 <div className="hero__search">
                                     <input
