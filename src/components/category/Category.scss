@@ -32,6 +32,7 @@
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 24px;
         padding: 30px 0;
+        overflow: hidden;
     }
     &__bot-card {
         padding: 80px 50px;

@@ -5,6 +5,8 @@ import "./Products.scss";
 import { FiShoppingCart } from "react-icons/fi";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
+import Loading from "../loading/Loading";
 
 let limit = 5;
 
@@ -13,11 +15,15 @@ const Products = () => {
     const [offset, setOffset] = useState(1);
     const [categories, setCategories] = useState([]);
     const [categoryName, setCategoryName] = useState("all");
+    const [loading, setLoading] = useState(false);
+    const [disable, setDisable] = useState(false);
 
     useEffect(() => {
         AOS.init();
     }, []);
     useEffect(() => {
+        setLoading(true);
+        setDisable(true);
         let category =
             categoryName === "all"
                 ? "/products"
@@ -25,7 +31,11 @@ const Products = () => {
         axios
             .get(`${category}?limit=${limit * offset}`)
             .then((res) => setProducts(res.data.products))
-            .catch((err) => console.log(err));
+            .catch((err) => console.log(err))
+            .finally(() => {
+                setLoading(false);
+                setDisable(false);
+            });
     }, [offset, categoryName]);
 
     useEffect(() => {
@@ -38,9 +48,11 @@ const Products = () => {
     let productsCard = products?.map((el) => (
         <div data-aos="fade-right" key={el.id} className="products__card">
             <div className="products__card__about">New</div>
-            <div className="products__card__img">
-                <img src={el.images[0]} alt="logo" />
-            </div>
+            <Link to={`/single/${el.id}`}>
+                <div className="products__card__img">
+                    <img src={el.images[0]} alt="logo" />
+                </div>
+            </Link>
             <div className="products__card-info">
                 <h3>{el.title}</h3>
                 <div className="products__card-rating">
@@ -96,10 +108,15 @@ const Products = () => {
                         {categoryItems}
                     </ul>
                 </div>
-                <div className="products__cards">{productsCard}</div>
+                {loading ? (
+                    <Loading />
+                ) : (
+                    <div className="products__cards">{productsCard}</div>
+                )}
                 <button
                     onClick={() => setOffset((p) => p + 1)}
                     className="see-more"
+                    disabled={disable}
                 >
                     See more
                 </button>
